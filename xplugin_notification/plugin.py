@@ -1,8 +1,51 @@
+from django.forms import Media
+from django.template.loader import render_to_string
 from rest_framework.exceptions import PermissionDenied
+from xadmin.plugins.utils import get_context_dict
 from xadmin.views import BaseAdminPlugin
 
+from xplugin_notification.models import Notification
 from xplugin_notification.rest.permisstion import HasNotificationPermission
 from xplugin_notification.rest.serializers import NotificationSerializer
+
+
+class NotificationMenuPlugin(BaseAdminPlugin):
+	"""Plugin that loads the menu and messages"""
+	notification_model = Notification
+
+	def init_request(self, *args, **kwargs):
+		...
+
+	def _get_notifications(self):
+		return self.notification_model.objects.filter(recipient=self.user)
+
+	def _get_notifications_menu_title(self):
+		return self.notification_model._meta.verbose_name_plural
+
+	def get_media(self, media):
+		return media + Media(js=['xplugin_notification/js/notifications.js'])
+
+	def block_extrabody(self, context, nodes):
+		"""Insert the message template"""
+		context = get_context_dict(context)
+		nodes.append(render_to_string('xplugin_notification/notification_message.html', context))
+
+	def block_top_navmenu(self, context, nodes):
+		"""Enter the notifications menu"""
+		context = get_context_dict(context)
+		queryset = self._get_notifications()
+		context["notification_admin"] = {
+			"title": self._get_notifications_menu_title(),
+			"items": queryset,
+			"count": queryset.count(),
+			"url": self.get_model_url(self.notification_model, "changelist"),
+			"list_url": self.get_model_url(self.notification_model, "rest"),
+		}
+		nodes.append(render_to_string(
+			"xplugin_notification/notification_menu.html",
+			context=context,
+			request=self.request
+		))
 
 
 class NotificationAdminPlugin(BaseAdminPlugin):

@@ -1,0 +1,23 @@
+<li class="nav-item dropdown">
+    <a href="#" class="nav-link text-nowrap px-0 px-lg-2 " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span class="fas fa-bell mr-1"></span>
+      <span class="d-none d-lg-inline-block ml-1">{{notification_admin.title}}</span>
+      <span class="badge badge-pill badge-warning badge-notify">{{notification_admin.count}}+</span>
+    </a>
+
+    <!-- dropdown -->
+    <div class="dropdown-menu dropdown-menu-rich dropdown-menu-right">
+        <div class="dropdown-arrow mr-sm-4 pr-sm-4"></div>
+        <h6 class="dropdown-header">
+            <span>{{notification_admin.title}}<span class="badge">({{notification_admin.count}})</span></span>
+        </h6>
+        <div class="dropdown-scroll perfect-scrollbar">
+            <div class="notification-message-item list-group list-group-bordered list-group-flush list-group-messages"
+                 data-list_url="{{notification_admin.list_url}}">
+            </div>
+        </div>
+        <a href="{{notification_admin.url}}" class="dropdown-footer">
+            Todas as notificações<i class="fa-solid fa-long-arrow-right ml-2"></i>
+        </a>
+    </div>
+ </li>

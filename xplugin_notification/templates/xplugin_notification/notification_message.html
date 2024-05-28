@@ -1,0 +1,26 @@
+{% load xadmin_tags %}
+<span class="d-none" id="notification_message">
+{% blockcapture notification_message %}
+  {% verbatim %}
+  <!-- notification item -->
+  <div class="list-group-item">
+    <a href="{{ notification.url }}" class="stretched-link"></a>
+    <!--user photo -->
+    <div class="list-group-item-figure stretched-link-reset align-items-start pr-3">
+      <!-- user link -->
+      <a href="{{ notification.user_url }}">
+        <div class="user-avatar user-avatar-md" data-toggle="tooltip" title="{{ notification.user_name }}">
+          <img src="https://uselooper.com/assets/images/avatars/profile.jpg" alt="">
+        </div>
+      </a>
+    </div>
+    <!-- notification body -->
+    <div class="list-group-item-body">
+      <div class="list-group-item-subtitle">{{ notification.message }}</div>
+      <div class="list-group-item-text">{{ notification.created }}</div>
+    </div>
+  </div>
+  {% endverbatim %}
+{% endblockcapture %}
+{{ notification_message }}
+</span>
