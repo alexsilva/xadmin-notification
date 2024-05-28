@@ -8,7 +8,7 @@ class Notification(models.Model):
 	                         on_delete=models.CASCADE)
 	message = models.TextField(_("Message"))
 
-	url = models.URLField(_("URL"), blank=True)
+	url = models.CharField(_("URL"), blank=True, max_length=1024)
 
 	is_read = models.BooleanField(_("Read"), default=False)
 	read_datetime = models.DateTimeField(null=True)
