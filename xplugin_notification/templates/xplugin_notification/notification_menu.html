@@ -16,8 +16,10 @@
                  data-list_url="{{notification_admin.list_url}}">
             </div>
         </div>
-        <a href="{{notification_admin.url}}" class="dropdown-footer">
-            Todas as notificações<i class="fa-solid fa-long-arrow-right ml-2"></i>
-        </a>
+        {% if notification_admin.count > 0 %}
+          <a href="{{notification_admin.url}}" class="dropdown-footer">
+              Todas as notificações<i class="fa-solid fa-long-arrow-right ml-2"></i>
+          </a>
+        {% endif %}
     </div>
  </li>
