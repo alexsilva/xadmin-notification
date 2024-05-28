@@ -13,3 +13,11 @@ class NotificationAdmin:
 	# plugin NotificationAdminPlugin
 	notification_active = True
 
+	list_display = (
+		"user",
+		"message",
+		"url",
+		"is_read",
+		"read_datetime"
+	)
+
