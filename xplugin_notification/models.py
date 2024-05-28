@@ -6,7 +6,7 @@ from django.utils.translation import gettext_lazy as _
 class Notification(models.Model):
 	source = models.ForeignKey(settings.AUTH_USER_MODEL,
 	                           verbose_name=_("User source"),
-	                           on_delete=models.CASCADE, null=True,
+	                           on_delete=models.CASCADE, blank=True, null=True,
 	                           related_name="notification_admin_source")
 
 	recipient = models.ForeignKey(settings.AUTH_USER_MODEL,
