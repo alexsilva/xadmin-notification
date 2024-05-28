@@ -4,6 +4,9 @@ $(function () {
         $.ajax({
             url: notifications.data("list_url"),
             data: {"plugin": "xnotification"},
+            beforeSend: function () {
+                notifications.empty();
+            }
         }).done(function (data) {
             $.each(data, function (index, notification) {
                 var message = $("#notification_message").template_render$({
