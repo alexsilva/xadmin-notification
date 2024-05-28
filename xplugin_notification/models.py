@@ -12,7 +12,7 @@ class Notification(models.Model):
 	url = models.CharField(_("URL"), blank=True, max_length=1024)
 
 	is_read = models.BooleanField(_("Read"), default=False)
-	read_datetime = models.DateTimeField(null=True)
+	read_datetime = models.DateTimeField(_("Read date"), blank=True, null=True)
 
 	created_at = models.DateTimeField(auto_now_add=True)
 	updated_at = models.DateTimeField(auto_now=True)
