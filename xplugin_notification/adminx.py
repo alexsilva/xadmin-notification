@@ -15,8 +15,9 @@ class NotificationAdmin:
 	notification_active = True
 
 	list_display = (
-		"user",
+		"recipient",
 		"message",
+		"source",
 		"url",
 		"is_read",
 		"read_datetime"
