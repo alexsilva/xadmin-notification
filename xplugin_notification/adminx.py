@@ -10,4 +10,6 @@ site.register_plugin(NotificationAdminPlugin, ModelAdminView)
 
 @xadmin.sites.register(Notification)
 class NotificationAdmin:
-	...
+	# plugin NotificationAdminPlugin
+	notification_active = True
+
