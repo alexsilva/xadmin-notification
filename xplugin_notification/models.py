@@ -5,7 +5,8 @@ from django.utils.translation import gettext_lazy as _
 
 class Notification(models.Model):
 	user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_("User"),
-	                         on_delete=models.CASCADE)
+	                         on_delete=models.CASCADE,
+	                         related_name="xnotifications")
 	message = models.TextField(_("Message"))
 
 	url = models.CharField(_("URL"), blank=True, max_length=1024)
