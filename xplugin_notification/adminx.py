@@ -1,11 +1,12 @@
 from xadmin.sites import site
-from xadmin.views import ModelAdminView
+from xadmin.views import ModelAdminView, CommAdminView
 import xadmin.sites
 
 from xplugin_notification.models import Notification
-from xplugin_notification.plugin import NotificationAdminPlugin
+from xplugin_notification.plugin import NotificationAdminPlugin, NotificationMenuPlugin
 
 site.register_plugin(NotificationAdminPlugin, ModelAdminView)
+site.register_plugin(NotificationMenuPlugin, CommAdminView)
 
 
 @xadmin.sites.register(Notification)
@@ -20,4 +21,3 @@ class NotificationAdmin:
 		"is_read",
 		"read_datetime"
 	)
-
