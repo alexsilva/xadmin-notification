@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.utils.module_loading import import_string
 from xadmin.sites import site
 from xadmin.views import ModelAdminView, CommAdminView, ListAdminView
 import xadmin.sites
@@ -10,8 +12,13 @@ site.register_plugin(NotificationMenuPlugin, CommAdminView)
 site.register_plugin(GuardianAdminPlugin, ListAdminView)
 
 
+NotificationAdminOpts = getattr(settings, "NOTIFICATION_ADMIN_OPTS", object)
+if isinstance(NotificationAdminOpts, str):
+	NotificationAdminOpts = import_string(NotificationAdminOpts)
+
+
 @xadmin.sites.register(Notification)
-class NotificationAdmin:
+class NotificationAdmin(NotificationAdminOpts):
 	# plugin NotificationAdminPlugin
 	notification_active = True
 
