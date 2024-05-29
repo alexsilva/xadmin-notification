@@ -1,0 +1,5 @@
+include README.md
+include LICENSE
+recursive-include xplugin_notification/locale *
+recursive-include xplugin_notification/static/xplugin_notification *
+recursive-include xplugin_notification/templates *

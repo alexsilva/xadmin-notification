@@ -8,6 +8,7 @@ setup(
 		'xplugin_notification.rest',
 		'xplugin_notification.migrations'
 	],
+	include_package_data=True,
 	url='https://github.com/alexsilva/xadmin-content-url',
 	license='MIT',
 	author='Alex',
