@@ -8,6 +8,7 @@ class NotificationSerializer(serializers.ModelSerializer):
 	id = serializers.IntegerField(source="pk")
 	user_name = serializers.SerializerMethodField("get_user_name")
 	user_url = serializers.SerializerMethodField("get_user_url")
+	user_photo_url = serializers.SerializerMethodField("get_user_photo_url")
 	message = serializers.SerializerMethodField('get_message')
 	url = serializers.SerializerMethodField("get_absolute_url", read_only=True)
 	created = serializers.SerializerMethodField("get_created", read_only=True)
@@ -17,6 +18,9 @@ class NotificationSerializer(serializers.ModelSerializer):
 
 	def get_user_url(self, instance):
 		return str(instance.source.get_absolute_url()) if instance.source else ''
+
+	def get_user_photo_url(self, instance):
+		return str(instance.source.photo_url) if instance.source.has_photo else ''
 
 	def get_absolute_url(self, instance):
 		return instance.url
@@ -33,6 +37,7 @@ class NotificationSerializer(serializers.ModelSerializer):
 			'id',
 			'user_name',
 			'user_url',
+			'user_photo_url',
 			'message',
 			'url',
 			'is_read',

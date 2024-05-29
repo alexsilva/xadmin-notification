@@ -11,7 +11,7 @@
       {% if notification.user_url %}
       <a href="{{ notification.user_url }}">
         <div class="user-avatar user-avatar-md" data-toggle="tooltip" title="{{ notification.user_name }}">
-          <img src="https://uselooper.com/assets/images/avatars/profile.jpg" alt="">
+          <img src="{{ notification.user_photo_url }}" alt="">
         </div>
       </a>
       {% endif %}
