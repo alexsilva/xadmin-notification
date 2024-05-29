@@ -25,6 +25,17 @@ class NotificationAdmin(NotificationAdminOpts):
 	# plugin GuardianAdminPlugin
 	notification_guardian_protected = True
 
+	list_filter = (
+		"recipient",
+		"source",
+		"is_read",
+	)
+
+	search_fields = (
+		"message",
+		"url"
+	)
+
 	list_display = (
 		"recipient",
 		"message",
