@@ -8,11 +8,13 @@
     <!--user photo -->
     <div class="list-group-item-figure stretched-link-reset align-items-start pr-3">
       <!-- user link -->
+      {% if notification.user_url %}
       <a href="{{ notification.user_url }}">
         <div class="user-avatar user-avatar-md" data-toggle="tooltip" title="{{ notification.user_name }}">
           <img src="https://uselooper.com/assets/images/avatars/profile.jpg" alt="">
         </div>
       </a>
+      {% endif %}
     </div>
     <!-- notification body -->
     <div class="list-group-item-body">
