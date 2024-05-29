@@ -4,6 +4,7 @@ from xadmin.sites import site
 from xadmin.views import ModelAdminView, CommAdminView, ListAdminView
 import xadmin.sites
 
+from xplugin_notification.actions import MarkAsReadAction
 from xplugin_notification.models import Notification
 from xplugin_notification.plugin import NotificationAdminPlugin, NotificationMenuPlugin, GuardianAdminPlugin
 
@@ -19,6 +20,8 @@ if isinstance(NotificationAdminOpts, str):
 
 @xadmin.sites.register(Notification)
 class NotificationAdmin(NotificationAdminOpts):
+	actions = (MarkAsReadAction,)
+
 	# plugin NotificationAdminPlugin
 	notification_active = True
 
