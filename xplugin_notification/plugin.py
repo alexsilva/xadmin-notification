@@ -1,5 +1,6 @@
 from django.contrib.auth import get_permission_codename
 from django.forms import Media
+from django.utils.translation import gettext as _
 from django.template.loader import render_to_string
 from guardian.shortcuts import get_objects_for_user
 from rest_framework.exceptions import PermissionDenied
@@ -14,6 +15,7 @@ from xplugin_notification.rest.serializers import NotificationSerializer
 class NotificationMenuPlugin(BaseAdminPlugin):
 	"""Plugin that loads the menu and messages"""
 	notification_model = Notification
+	notification_menu_title = _('Notifications')
 
 	def init_request(self, *args, **kwargs):
 		...
@@ -21,8 +23,8 @@ class NotificationMenuPlugin(BaseAdminPlugin):
 	def _get_notifications(self):
 		return self.notification_model.objects.filter(recipient=self.user)
 
-	def _get_notifications_menu_title(self):
-		return self.notification_model._meta.verbose_name_plural
+	def _get_notifications_menu_title(self) -> str:
+		return self.notification_menu_title
 
 	def get_media(self, media):
 		return media + Media(js=['xplugin_notification/js/notifications.js'])
