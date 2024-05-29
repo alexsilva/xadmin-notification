@@ -20,7 +20,7 @@ class NotificationSerializer(serializers.ModelSerializer):
 		return str(instance.source.get_absolute_url()) if instance.source else ''
 
 	def get_user_photo_url(self, instance):
-		return str(instance.source.photo_url) if instance.source.has_photo else ''
+		return str(instance.source.photo_url) if instance.source and instance.source.has_photo else ''
 
 	def get_absolute_url(self, instance):
 		return instance.url
