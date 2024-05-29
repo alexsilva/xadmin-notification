@@ -40,7 +40,16 @@ class NotificationAdmin(NotificationAdminOpts):
 		"recipient",
 		"message",
 		"source",
-		"url",
+		"url_display",
 		"is_read",
 		"read_datetime"
 	)
+
+	def url_display(self, instance):
+		"""Url display field"""
+		return f"<a href='{instance.url}'>{instance.url}</a>" if instance.url else ""
+
+	url_display.short_description = "URL"
+	url_display.admin_order_field = "url"
+	url_display.is_column = True
+	url_display.allow_tags = True
