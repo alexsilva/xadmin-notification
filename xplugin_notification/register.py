@@ -17,6 +17,9 @@ class NotificationRegister:
 
 	def notify(self, recipient, message: str, source=None, **options):
 		"""Notifies a users"""
+		if not (recipient.is_staff and recipient.is_active):
+			# only sends notifications to active staff and users.
+			return
 		obj = self.notification_model.objects.create(
 			recipient=recipient,
 			source=source,
