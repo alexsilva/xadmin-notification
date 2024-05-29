@@ -77,7 +77,7 @@ class NotificationAdminPlugin(BaseAdminPlugin):
 		return serializer_class
 
 	def filter_queryset(self, queryset, *args, **kwargs):
-		return queryset
+		return queryset.filter(recipient=self.user)
 
 
 class GuardianAdminPlugin(BaseAdminPlugin):
