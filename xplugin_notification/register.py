@@ -3,10 +3,10 @@ from guardian.shortcuts import assign_perm
 
 from xplugin_notification.models import Notification
 
-__all__ = ["notification", "NotificationRegister"]
+__all__ = ["notification", "NotificationAdmin"]
 
 
-class NotificationRegister:
+class NotificationAdmin:
 	"""Object that registers the notifications that will be delivered to the user"""
 
 	notification_model = Notification
@@ -43,4 +43,4 @@ class NotificationRegister:
 		return notifications
 
 
-notification = NotificationRegister()
+notification = NotificationAdmin()
