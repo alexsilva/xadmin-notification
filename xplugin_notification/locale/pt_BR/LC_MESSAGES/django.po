@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-29 16:43-0300\n"
+"POT-Creation-Date: 2024-05-29 17:21-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: xplugin_notification/actions.py:10
+#, python-format
+msgid "Mark read selected %(verbose_name_plural)s"
+msgstr "Marque lido %(verbose_name_plural)s selecionado"
+
 #: xplugin_notification/models.py:8
 msgid "User source"
 msgstr "Usuário remetente"
