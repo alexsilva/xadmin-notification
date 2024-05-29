@@ -1,5 +1,7 @@
+from django.contrib.auth import get_permission_codename
 from django.forms import Media
 from django.template.loader import render_to_string
+from guardian.shortcuts import get_objects_for_user
 from rest_framework.exceptions import PermissionDenied
 from xadmin.plugins.utils import get_context_dict
 from xadmin.views import BaseAdminPlugin
@@ -75,4 +77,25 @@ class NotificationAdminPlugin(BaseAdminPlugin):
 		return serializer_class
 
 	def filter_queryset(self, queryset, *args, **kwargs):
+		return queryset
+
+
+class GuardianAdminPlugin(BaseAdminPlugin):
+	"""Protects the view by allowing access only to objects for which the user has permission"""
+	notification_guardian_protected = False
+
+	def init_request(self, *args, **kwargs):
+		return self.notification_guardian_protected
+
+	def queryset(self, __):
+		model_perms = self.admin_view.get_model_perms()
+		model_perms = [get_permission_codename(name, self.opts)
+		               for name in model_perms if model_perms[name]]
+		queryset = get_objects_for_user(
+			self.user,
+			model_perms,
+			klass=self.model,
+			any_perm=True,
+			with_superuser=True,
+			accept_global_perms=False)
 		return queryset
