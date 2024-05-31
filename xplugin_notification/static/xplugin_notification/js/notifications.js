@@ -2,7 +2,7 @@ $(function () {
     var Notification = function ($el, options) {
         this.$el = $el;
         this.mask = '<{{header|default("h3")}} style="text-align:center;"><i class="{{icon}}"></i>{{text|safe}}</{{header|default("h3")}}>';
-        this.options = options;
+        this.options = options || {};
     }
 
     Notification.prototype.mask_render = function (options) {
@@ -57,8 +57,8 @@ $(function () {
         })
     }
 
-    $(".nav-item .notification-message").click(function () {
-        var notification = new Notification($(".dropdown-menu .notification-message-item"));
+    $(".notification-menu").on("show.bs.dropdown", function () {
+        var notification = new Notification($(this).find(".dropdown-menu .notification-message-item"));
         notification.load();
     })
 })
