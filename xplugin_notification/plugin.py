@@ -57,6 +57,9 @@ class NotificationAdminPlugin(BaseAdminPlugin):
 	notification_serializer_class = NotificationSerializer
 	notification_permissions = [HasNotificationPermission]
 	notification_request_param = "xnotification"
+	notification_unlimited = False
+	# Limits the maximum number of notifications visible to the user to number.
+	notification_max_num = 25
 	notification_active = True
 
 	def init_request(self, *args, **kwargs):
@@ -79,7 +82,10 @@ class NotificationAdminPlugin(BaseAdminPlugin):
 		return serializer_class
 
 	def filter_queryset(self, queryset, *args, **kwargs):
-		return queryset.filter(recipient=self.user)
+		queryset = queryset.filter(recipient=self.user)
+		if not self.notification_unlimited and self.notification_max_num:
+			queryset = queryset[:self.notification_max_num]
+		return queryset
 
 
 class GuardianAdminPlugin(BaseAdminPlugin):
