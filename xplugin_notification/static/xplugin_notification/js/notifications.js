@@ -11,7 +11,7 @@ $(function () {
 
     /* Displays a spinner in the body of the modal, indicating that a data load is in progress. */
     Notification.prototype.loading = function () {
-        return this.$el.html($(this.mask_render({header: "h1", icon: 'fa-spinner fa-spin fa fa-large'})));
+        return this.$el.html($(this.mask_render({header: "div", icon: 'spinner-border text-primary m-4'})));
     }
 
     /* Action retry for fail. */
