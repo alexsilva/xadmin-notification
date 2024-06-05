@@ -24,10 +24,10 @@ $(function () {
     /* When a data load failure occurs. */
     Notification.prototype.fail = function (action) {
         return this.$el.html(this.mask_render({
-            icon: 'fa fa-exclamation-circle text-danger mr-1',
+            icon: 'fa fa-exclamation-circle text-danger my-4 mr-1',
             classes: 'retry',
-            header: "h6",
-            text: $.fn.nunjucks_env.renderString('<a href="javascript:({{action}});">{{msg}}</a>', {
+            header: "strong",
+            text: $.fn.nunjucks_env.renderString('<a class="text-danger" href="javascript:({{action}});">{{msg}}</a>', {
                 msg: gettext("Failed to load data."),
                 action: action
             },),
