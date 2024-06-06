@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-06 13:04-0300\n"
+"POT-Creation-Date: 2024-06-06 13:28-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,6 +23,10 @@ msgstr ""
 msgid "Mark read selected %(verbose_name_plural)s"
 msgstr "Marque lido %(verbose_name_plural)s selecionados"
 
+#: xplugin_notification/adminx.py:56 xplugin_notification/models.py:17
+msgid "Message"
+msgstr "Mensagem"
+
 #: xplugin_notification/apps.py:7 xplugin_notification/models.py:32
 msgid "Notifications (admin)"
 msgstr "Notificações (admin)"
@@ -34,10 +38,6 @@ msgstr "Usuário remetente"
 #: xplugin_notification/models.py:13
 msgid "User recipient"
 msgstr "Usuário destinatário"
-
-#: xplugin_notification/models.py:17
-msgid "Message"
-msgstr "Mensagem"
 
 #: xplugin_notification/models.py:19
 msgid "URL"
@@ -59,6 +59,6 @@ msgstr "Notificação (admin)"
 msgid "Notifications"
 msgstr "Notificações"
 
-#: xplugin_notification/templates/xplugin_notification/notification_menu.html:20
+#: xplugin_notification/templates/xplugin_notification/notification_menu.html:23
 msgid "All notifications"
 msgstr "Todas as notificações"
