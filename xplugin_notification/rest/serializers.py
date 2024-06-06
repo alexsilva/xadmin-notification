@@ -26,8 +26,7 @@ class NotificationSerializer(serializers.ModelSerializer):
 		return instance.url
 
 	def get_message(self, instance):
-		# handle xss
-		return html.escape(str(instance.message))
+		return str(instance.message)
 
 	def get_created(self, instance):
 		return date_format(instance.created_at, format="DATETIME_FORMAT")

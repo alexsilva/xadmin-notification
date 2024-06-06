@@ -18,7 +18,7 @@
     </div>
     <!-- notification body -->
     <div class="list-group-item-body">
-      <div class="list-group-item-subtitle">{{ notification.message }}</div>
+      <div class="list-group-item-subtitle">{{ notification.message|safe }}</div>
       <div class="list-group-item-text">{{ notification.created }}</div>
     </div>
   </div>
