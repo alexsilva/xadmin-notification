@@ -1,9 +1,9 @@
-{% if notification_admin.count > 0 %}
+{% if notification_admin.unread.count > 0 %}
     <li class="nav-item dropdown notification-menu">
         <a href="#" class="nav-link notification-link text-nowrap" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <span class="fas fa-bell"></span>
           <span class="d-md-none d-xxl-inline-block">{{notification_admin.title}}</span>
-          <span class="badge badge-pill badge-warning badge-notify">{{notification_admin.count}}</span>
+          <span class="badge badge-pill badge-warning badge-notify">{{notification_admin.unread.count}}</span>
         </a>
         <!-- dropdown -->
         <div class="dropdown-menu dropdown-menu-rich dropdown-menu-right">

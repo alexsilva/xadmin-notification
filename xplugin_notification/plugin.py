@@ -38,10 +38,20 @@ class NotificationMenuPlugin(BaseAdminPlugin):
 		"""Enter the notifications menu"""
 		context = get_context_dict(context)
 		queryset = self._get_notifications()
+		read_qs = queryset.filter(is_read=True)
+		unread_qs = queryset.filter(is_read=False)
 		context["notification_admin"] = {
 			"title": self._get_notifications_menu_title(),
 			"items": queryset,
 			"count": queryset.count(),
+			"read": {
+				"items": read_qs,
+				"count": read_qs.count(),
+			},
+			"unread": {
+				"items": unread_qs,
+				"count": unread_qs.count(),
+			},
 			"url": self.get_model_url(self.notification_model, "changelist"),
 			"list_url": self.get_model_url(self.notification_model, "rest"),
 		}
