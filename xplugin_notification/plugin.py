@@ -38,6 +38,9 @@ class NotificationMenuPlugin(BaseAdminPlugin):
 		"""Enter the notifications menu"""
 		context = get_context_dict(context)
 		queryset = self._get_notifications()
+		if not queryset.exists():
+			# Does not render view because there are no messages
+			return
 		read_qs = queryset.filter(is_read=True)
 		unread_qs = queryset.filter(is_read=False)
 		context["notification_admin"] = {
