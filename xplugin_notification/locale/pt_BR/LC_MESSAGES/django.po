@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-31 10:22-0300\n"
+"POT-Creation-Date: 2024-06-06 13:04-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,3 +58,7 @@ msgstr "Notificação (admin)"
 #: xplugin_notification/plugin.py:18
 msgid "Notifications"
 msgstr "Notificações"
+
+#: xplugin_notification/templates/xplugin_notification/notification_menu.html:20
+msgid "All notifications"
+msgstr "Todas as notificações"
