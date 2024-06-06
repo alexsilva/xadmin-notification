@@ -1,12 +1,11 @@
 $(function () {
     var Notification = function ($el, options) {
         this.$el = $el;
-        this.mask = '<{{header|default("h3")}} style="text-align:center;"><i class="{{icon}}"></i>{{text|safe}}</{{header|default("h3")}}>';
         this.options = options || {};
     }
 
     Notification.prototype.mask_render = function (options) {
-        return $.fn.nunjucks_env.renderString(this.mask, options)
+        return $("#notification_mask").template_render$(options);
     }
 
     /* Displays a spinner in the body of the modal, indicating that a data load is in progress. */
