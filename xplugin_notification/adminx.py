@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.utils.translation import gettext_lazy as _
 from django.utils.module_loading import import_string
 from xadmin.sites import site
 from xadmin.views import ModelAdminView, CommAdminView, ListAdminView
@@ -41,12 +42,21 @@ class NotificationAdmin(NotificationAdminOpts):
 
 	list_display = (
 		"recipient",
-		"message",
+		"message_display",
 		"source",
 		"url_display",
 		"is_read",
 		"read_datetime"
 	)
+
+	def message_display(self, instance):
+		"""Message display field"""
+		return str(instance)
+
+	message_display.short_description = _("Message")
+	message_display.admin_order_field = "message"
+	message_display.is_column = True
+	message_display.allow_tags = True
 
 	def url_display(self, instance):
 		"""Url display field"""
