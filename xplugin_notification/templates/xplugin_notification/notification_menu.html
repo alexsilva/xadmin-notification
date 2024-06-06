@@ -4,7 +4,9 @@
         <a href="#" class="nav-link notification-link text-nowrap" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <span class="fas fa-bell"></span>
           <span class="d-md-none d-xxl-inline-block">{{notification_admin.title}}</span>
-          <span class="badge badge-pill badge-warning badge-notify">{{notification_admin.unread.count}}</span>
+          <span class="badge badge-pill badge-warning badge-notify">
+            {% if notification_admin.unread.count < 99 %}{{notification_admin.unread.count}}{% else %}99+{% endif %}
+          </span>
         </a>
         <!-- dropdown -->
         <div class="dropdown-menu dropdown-menu-rich dropdown-menu-right">
