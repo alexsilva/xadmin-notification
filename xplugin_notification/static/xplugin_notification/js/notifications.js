@@ -4,17 +4,19 @@ $(function () {
         this.options = options || {};
     }
 
-    Notification.prototype.mask_render = function (options) {
-        return $("#notification_mask").template_render$(options);
+    Notification.prototype.render = function (elId, options) {
+        return $(elId).template_render$(options);
     }
 
     /* Displays a spinner in the body of the modal, indicating that a data load is in progress. */
     Notification.prototype.loading = function () {
-        return this.$el.html($(this.mask_render({header: "div", icon: 'spinner-border text-primary m-4'})));
+        return this.$el.html(this.render("#notification_admin_loading", {
+            classes: 'loading',
+        }));
     }
 
     /* Action retry for fail. */
-    Notification.prototype.retry = function (name, callback) {
+    Notification.prototype.retry_action = function (name, callback) {
         xadmin.retry = xadmin.retry || {};
         xadmin.retry[name] = callback;
         return "xadmin.retry['" + name + "']()";
@@ -22,14 +24,12 @@ $(function () {
 
     /* When a data load failure occurs. */
     Notification.prototype.fail = function (action) {
-        return this.$el.html(this.mask_render({
-            icon: 'fa fa-exclamation-circle text-danger my-4 mr-1',
+        return this.$el.html(this.render("#notification_admin_retry", {
             classes: 'retry',
-            header: "strong",
-            text: $.fn.nunjucks_env.renderString('<a class="text-danger" href="javascript:({{action}});">{{msg}}</a>', {
-                msg: gettext("Failed to load data."),
+            retry: {
+                text: gettext("Failed to load data."),
                 action: action
-            },),
+            }
         }));
     }
 
@@ -50,7 +50,7 @@ $(function () {
                 self.$el.append(message);
             });
         }).fail(function () {
-            self.fail(self.retry('xnotification', function () {
+            self.fail(self.retry_action('xnotification', function () {
                 self.load();
             }))
         })

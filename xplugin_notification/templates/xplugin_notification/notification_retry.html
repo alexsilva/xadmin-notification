@@ -1,0 +1,14 @@
+{% load xadmin_tags %}
+<span class="d-none" id="notification_admin_retry">
+{% blockcapture notification_mask %}
+  {% verbatim %}
+
+    <h6 style="text-align:center;" class="{{ classes }}">
+      <i class="fa fa-exclamation-circle text-danger my-4 mr-1"></i>
+      <a class="text-danger" href="javascript:({{ retry.action }});">{{ retry.text }}</a>
+    </h6>
+
+  {% endverbatim %}
+{% endblockcapture %}
+{{ notification_mask }}
+</span>

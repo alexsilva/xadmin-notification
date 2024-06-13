@@ -1,0 +1,13 @@
+{% load xadmin_tags %}
+<span class="d-none" id="notification_admin_loading">
+{% blockcapture notification_loading %}
+  {% verbatim %}
+
+    <div style="text-align:center;" class="{{ classes }}">
+      <i class="spinner-border text-primary m-4"></i>
+    </div>
+
+  {% endverbatim %}
+{% endblockcapture %}
+{{ notification_loading }}
+</span>

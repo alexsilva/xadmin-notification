@@ -63,11 +63,18 @@ class NotificationMenuPlugin(BaseAdminPlugin):
 			context=context,
 			request=self.request
 		))
-		nodes.append(render_to_string(
-			"xplugin_notification/notification_mask.html",
-			context=context,
-			request=self.request
-		))
+		nodes.extend([
+			render_to_string(
+				"xplugin_notification/notification_loading.html",
+				context=context,
+				request=self.request
+			),
+			render_to_string(
+				"xplugin_notification/notification_retry.html",
+				context=context,
+				request=self.request
+			)
+		])
 
 
 class NotificationAdminPlugin(BaseAdminPlugin):
