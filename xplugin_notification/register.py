@@ -36,7 +36,7 @@ class NotificationAdmin:
 		"""Notifies a list of user groups"""
 		notifications = []
 		for group in groups:
-			for user in group.user_set.all():
+			for user in group.user_set.filter(is_staff=True, is_active=True):
 				notifications.append(
 					self.notify(user, message, source=source, **options)
 				)
