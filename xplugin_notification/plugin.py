@@ -116,6 +116,7 @@ class NotificationAdminPlugin(BaseAdminPlugin):
 class GuardianAdminPlugin(BaseAdminPlugin):
 	"""Protects the view by allowing access only to objects for which the user has permission"""
 	notification_guardian_protected = False
+	notification_guardian_objects_with_superuser = True
 
 	def init_request(self, *args, **kwargs):
 		return self.notification_guardian_protected
@@ -129,6 +130,6 @@ class GuardianAdminPlugin(BaseAdminPlugin):
 			model_perms,
 			klass=self.model,
 			any_perm=True,
-			with_superuser=True,
+			with_superuser=self.notification_guardian_objects_with_superuser,
 			accept_global_perms=False)
 		return queryset
