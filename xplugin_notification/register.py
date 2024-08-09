@@ -22,6 +22,12 @@ class NotificationAdmin:
 			return
 		defaults = dict(options)
 		defaults.update(message=message)
+		if not slug:
+			slug_default = self.opts.get_field('slug').default
+			if callable(slug_default):
+				slug = slug_default()
+			else:
+				slug = slug_default
 		obj, created = self.notification_model.objects.update_or_create(
 			slug=slug,
 			recipient=recipient,
