@@ -4,6 +4,8 @@ from django.utils.translation import gettext_lazy as _
 
 
 class Notification(models.Model):
+	slug = models.SlugField(null=True, blank=True, editable=False)
+
 	source = models.ForeignKey(settings.AUTH_USER_MODEL,
 	                           verbose_name=_("User source"),
 	                           on_delete=models.CASCADE, blank=True, null=True,
