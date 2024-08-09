@@ -8,11 +8,14 @@ import xadmin.sites
 from xplugin_notification.actions import MarkAsReadAction
 from xplugin_notification.models import Notification
 from xplugin_notification.plugin import NotificationAdminPlugin, NotificationMenuPlugin, GuardianAdminPlugin
+from xplugin_notification.views import NotificationReadAdminView
 
 site.register_plugin(NotificationAdminPlugin, ModelAdminView)
 site.register_plugin(NotificationMenuPlugin, CommAdminView)
 site.register_plugin(GuardianAdminPlugin, ListAdminView)
 
+
+site.register_view(r"notification/admin/(?P<object_id>\d+)/read", NotificationReadAdminView, 'notification_admin_read')
 
 NotificationAdminOpts = getattr(settings, "NOTIFICATION_ADMIN_OPTS", object)
 if isinstance(NotificationAdminOpts, str):
