@@ -1,5 +1,4 @@
 # coding=utf-8
-from django.utils import html
 from django.utils.formats import date_format
 from rest_framework import serializers
 
@@ -23,7 +22,7 @@ class NotificationSerializer(serializers.ModelSerializer):
 		return str(instance.source.photo_url) if instance.source and instance.source.has_photo else ''
 
 	def get_absolute_url(self, instance):
-		return instance.url
+		return self.context['view'].get_admin_url("notification_admin_read", object_id=instance.pk)
 
 	def get_message(self, instance):
 		return str(instance.message)
