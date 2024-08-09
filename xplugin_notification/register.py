@@ -34,13 +34,13 @@ class NotificationAdmin:
 			assign_perm(permission_codename, recipient, obj)
 		return obj
 
-	def notify_groups(self, groups: tuple, message: str, source=None, **options):
+	def notify_groups(self, groups: tuple, message: str, source=None, slug=None, **options):
 		"""Notifies a list of user groups"""
 		notifications = []
 		for group in groups:
 			for user in group.user_set.filter(is_staff=True, is_active=True):
 				notifications.append(
-					self.notify(user, message, source=source, **options)
+					self.notify(user, message, source=source, slug=slug, **options)
 				)
 		return notifications
 
