@@ -15,7 +15,7 @@ class NotificationReadAdminView(BaseAdminView):
 	def get(self, request, object_id, **kwargs):
 		obj = get_object_or_404(self.model, pk=object_id, recipient=self.user)
 
-		if not obj.read:
+		if not obj.is_read:
 			obj.is_read = True
 			obj.read_datetime = timezone.now()
 			obj.save()
